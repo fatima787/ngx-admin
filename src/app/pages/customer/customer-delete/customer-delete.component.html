@@ -1,0 +1,15 @@
+<mat-icon type="button" class="close" (click)="onNoClick()">clear</mat-icon>
+<h6 style="font-size: 13px">Are you sure you want to delete ?</h6>
+<div class="container">
+  <div mat-dialog-content>
+   CustomerName: {{data.FirstName}}  {{data.LastName}}
+   <p></p>
+
+  </div>
+
+  <div mat-dialog-actions>
+    <button mat-raised-button color="warn" [mat-dialog-close]="1" (click)="confirmDelete()">Delete</button>
+    <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+  </div>
+</div>
+

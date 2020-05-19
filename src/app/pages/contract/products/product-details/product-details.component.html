@@ -1,0 +1,84 @@
+ <!-- <div>
+  <h2>Contract Details</h2>
+
+
+    <table *ngFor="let contract of product">
+
+  <tr >
+      <th>CustomerName:  </th>
+      <th>{{ contract.FirstName }} {{contract.LastName}} </th>
+  </tr>
+
+  <tbody *ngFor="let details of contract.procontracts">
+   <tr >
+    <th>ContractName:  </th>
+    <th>{{ details.ProductName }} </th>
+  </tr>
+<tr>
+    <th>Price:  </th>
+    <th>{{ details.Price }}</th>
+  </tr>
+  <tr>
+    <th>Quantity:  </th>
+    <th>{{ details.Quantity }}</th>
+  </tr>
+  <tr>
+    <th>Status:  </th>
+    <th>{{ details.status }}</th>
+  </tr>
+  <tr>
+    <th>startdate:  </th>
+    <th>{{ details.startdate }}</th>
+  </tr>
+  <tr>
+    <th>enddate:  </th>
+    <th>{{ details.enddate }}</th>
+  </tr>
+  <tr>
+    <th>Price per Term:  </th>
+    <th>{{ details.priceterm }}</th>
+  </tr>
+  <tr>
+    <th>Term:  </th>
+    <th>{{ details.term }}</th>
+  </tr>
+  <tr>
+    <th>Total Price:  </th>
+    <th>{{ details.totalprice }}</th>
+  </tr>
+  </tbody>
+
+</table>
+ <button routerLink= "/pages/contract/products">Back</button>
+</div> -->
+
+<table mdbTable *ngFor="let contract of product" >
+  <thead *ngFor="let details of contract.procontracts">
+    <tr>
+      <th scope="col"> CustomerName</th>
+      <th scope="col"> ContractName</th>
+      <th scope="col"> Status</th>
+      <th scope="col"> startDate</th>
+      <th scope="col"> endDate</th>
+      <th scope="col"> Quantity</th>
+      <th scope="col"> Price</th>
+      <th scope="col"> Term </th>
+       <th scope="col"> Price per term</th>
+      <th scope="col"> Total Price</th>
+    </tr>
+      <tr>
+      <th scope="row">{{contract.FirstName}} {{contract.LastName}}</th>
+       <th scope="row">{{details.ProductName}}</th>
+       <th scope="row">{{details.status}}</th>
+       <th scope="row">{{details.start}}</th>
+      <th scope="row">{{details.end}}</th>
+      <th scope="row">{{details.Quantity}}</th>
+      <th scope="row">{{details.Price}}</th>
+      <th scope="row">{{details.term}}</th>
+      <th scope="row">{{details.priceterm}}</th>
+      <th scope="row">{{details.totalprice}}</th>
+       </tr>
+  </thead>
+</table>
+
+ <button routerLink= "/pages/contract/products">Back</button>

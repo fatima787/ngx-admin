@@ -1,0 +1,38 @@
+.containerr {
+  display: flex;
+  flex-direction: column;
+  min-width: 1000px;
+  padding: 50px;
+}
+
+.container > * {
+  width: 100%;
+}
+
+.form {
+  display: flex;
+  padding-top: 6px;
+
+}
+
+.mat-form-field {
+  font-size: 12px;
+ width:50%
+}
+
+.close {
+    top: 1px;
+	position: relative;
+
+
+}
+.mat-dialog-content {
+	padding: 80px;
+    padding-top: 20px;
+    padding-right: 80px;
+    padding-bottom: 5px;
+    padding-left: 25px;
+}
+.mat-dialog-container {
+  padding: 60px;
+}

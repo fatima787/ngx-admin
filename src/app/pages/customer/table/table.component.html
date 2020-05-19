@@ -1,0 +1,75 @@
+
+<div class="mat-elevation-z8" >
+
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter issues">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="cust" matSort class="mat-cell"  >
+    ng update @angular/cli @angular/core
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- ID Column -->
+
+    <ng-container matColumnDef="FirstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>CustomerName</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.FirstName}} {{row.LastName}}</mat-cell>
+    </ng-container>
+
+
+	<ng-container matColumnDef="Company" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Company</mat-header-cell>
+      <mat-cell  *matCellDef="let row" >  {{ row.Company }}  </mat-cell>
+    </ng-container>
+
+	<ng-container matColumnDef="Email" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Email</mat-header-cell>
+      <mat-cell  *matCellDef="let row" >  {{ row.Email }}  </mat-cell>
+    </ng-container>
+
+	<ng-container matColumnDef="Phone" >
+      <mat-header-cell *matHeaderCellDef mat-sort-header >Phone</mat-header-cell>
+      <mat-cell  *matCellDef="let row" >  {{ row.Phone }}  </mat-cell>
+    </ng-container>
+
+	    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="primary" (click)="addNew()">Add Customer</button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button color="primary" matTooltip="Edit" (click)="EditCustomer(row.FirstName, row.LastName, row.Country, row.Address, row.Company, row.Email, row.Phone, row.Mobile, row.Website, row._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+    <button mat-icon-button color="primary" matTooltip="Details"  [routerLink]="['details/', row._id]"><mat-icon>assignment</mat-icon></button>
+
+    <button mat-icon-button color="accent" matTooltip="Delete"  (click)="deleteItem(row._id, row.FirstName, row.LastName, row.Country, row.Address, row.Company, row.Email, row.Phone, row.Mobile, row.Website)">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+  <!-- <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+    No results
+  </div>  -->
+
+  <mat-paginator #paginator
+                 [length]="dataSource.filteredData.length"
+                 [pageIndex]="0"
+                 [pageSize]="5"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+
+</div>
+
+
+

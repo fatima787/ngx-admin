@@ -1,0 +1,142 @@
+<mat-icon type="button" class="close" (click)="onNoClick()">clear</mat-icon>
+  <h5 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane">Add new Product</h5>
+<div class="containerr">
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+<mat-label>Select Customer</mat-label>
+  <select  [(ngModel)]="selectedLevel" (change)="selected()" name="selectedLevel">
+        <option  *ngFor="let prod of cust"   [ngValue]="prod" >{{prod.FirstName}} </option>
+</select>
+
+    <div class="form">
+      <h6 style=" font-size: 13px" >Product Information:</h6>
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <h6 style=" font-size: 13px" >Contractual Term:</h6>
+      </div>
+      <div class="form">
+    <div class="example-form" >
+      <mat-form-field  color="accent">
+        <input matInput #input class="form-control" placeholder="ProductName" [(ngModel)]="data.ProductName" name="ProductName" required >
+      </mat-form-field>
+    </div>
+    <div  class="example-form">
+      <label style=" font-size: 10px">Payment:</label><span>&nbsp;&nbsp;</span>
+    <mat-form-field>
+      <mat-label>Price</mat-label>
+      <input matInput #input [(ngModel)]="data.price" name="price">
+    </mat-form-field>
+    <label style=" font-size: 10px">Term:</label><span>&nbsp;&nbsp;</span>
+      <mat-form-field>
+        <mat-label>Choose Term</mat-label>
+        <mat-select   #input [(ngModel)]="data.term" name="term">
+          <mat-option value="Weekly">Weekly</mat-option>
+          <mat-option value="Monthly">Monthly</mat-option>
+          <mat-option value="Quarterly">Quarterly </mat-option>
+          <mat-option value="Bi Annual">Bi Annual"</mat-option>
+          <mat-option value="Annual">Annual</mat-option>
+          <mat-option value="none">None</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+  </div>
+  </div>
+
+    <div class="form">
+      <div class="example-from">
+	  <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Quantity" [(ngModel)]="data.Quantity" name="Quantity" >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <div  class="example-form">
+        <label style=" font-size: 10px">Total Price:</label><span>&nbsp;&nbsp;</span>
+        <mat-form-field  >
+          <mat-label>Total Price:</mat-label>
+          <input matInput name="totalprice" [(ngModel)]="data.totalprice" >
+        </mat-form-field>
+      </div>
+    </div>
+
+    <div class="form">
+      <div class="example-form" >
+	  <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Price" [(ngModel)]="data.Price" name="Price"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+    </div>
+    </div>
+
+  <div class="form">
+    <div class="example-form" >
+      <mat-form-field>
+        <mat-label>Select Status</mat-label>
+        <mat-select  name="status" #input [(ngModel)]="data.status" >
+          <mat-option value="active">active</mat-option>
+          <mat-option value="in progress">in progress</mat-option>
+          <mat-option value="on hold">on hold </mat-option>
+          <mat-option value="complete">complete</mat-option>
+          <mat-option value="expired">expired</mat-option>
+          <mat-option value="none">None</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+</div>
+  <mat-form-field>
+   <mat-label>Contract Type</mat-label>
+<mat-select #input [(ngModel)]="data.type" name="type" required>
+<mat-option value="product">product </mat-option>
+</mat-select>
+  </mat-form-field>
+<form [formGroup]="startEndDatesForm">
+  <div class="example-form">
+   <mat-form-field class="example-full-width">
+     <input  matInput  [max]="startEndDatesForm.controls['endDate'].value" formControlName='startDate' #startDate (dateChange)="startDateClicked($event)"
+       [matDatepicker]="picker1"  placeholder="StartDate" readonly>
+     <mat-datepicker-toggle matSuffix [for]="picker1" #startDateToggle></mat-datepicker-toggle>
+     <mat-datepicker #picker1></mat-datepicker>
+   </mat-form-field>
+   <button mat-button (click)="monthsUp()">Monthly</button>
+   <button mat-button (click)="yearsUp()">Annual</button>
+   </div>
+
+   <div class="example-form">
+   <mat-form-field class="example-full-width">
+     <input  matInput [min]="startEndDatesForm.controls['startDate'].value" formControlName="endDate" #endDate (dateChange)="endDateClicked($event)" [matDatepicker]="picker2"
+      placeholder="EndDate" readonly>
+     <mat-datepicker-toggle matSuffix [for]="picker2" #endDateToggle></mat-datepicker-toggle>
+     <mat-datepicker #picker2></mat-datepicker>
+   </mat-form-field>
+     <span class="warning" *ngIf="startEndDatesForm.controls['endDate'].value &&(startEndDatesForm.controls['endDate'].value < startEndDatesForm.controls['startDate'].value)">
+       *Please insert a valid enddate
+     </span>
+   </div>
+   </form>
+   <div class="form">
+    <div class="example-form" >
+      <mat-form-field>
+        <mat-label>You will be remind before</mat-label>
+        <mat-select  name="reminddate" #input >
+          <mat-option value="Day"> One Day</mat-option>
+          <mat-option value="Week">Week</mat-option>
+          <mat-option value="Month">Month</mat-option>
+        </mat-select>
+      </mat-form-field>
+  </div>
+</div>
+
+<!-- <button (click)="monthRemind()" name="reminddate" #input [(ngModel)]="data.reminddate" >Month down</button>
+{{this.data.reminddate}} -->
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="confirmAdd()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+
+</div>
+

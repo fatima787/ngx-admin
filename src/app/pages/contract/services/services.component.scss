@@ -1,0 +1,66 @@
+.container {
+    border-radius: 5px;
+    background-color: #A9D2F1;
+    padding: 10px;
+    box-shadow: 10px 10px 5px #aaaaaa;
+    width: 15%;
+    height: 60%;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .active-icon {
+    height: 12px;
+    width: 12px;
+    background-color: #0ABB07;
+    border-radius: 50%;
+    float: left;
+
+}
+.inprog-icon {
+    height: 12px;
+    width: 12px;
+    background-color: #E0E31C;
+    border-radius: 50%;
+    float: left;
+
+}
+.onhold-icon {
+    height: 12px;
+    width: 12px;
+    background-color: #F0A61E;
+    border-radius: 50%;
+    float: left;
+
+}
+.comp-icon {
+    height: 12px;
+    width: 12px;
+    background-color: #0B83DC;
+    border-radius: 50%;
+    float: left;
+
+}
+.expire-icon {
+    height: 12px;
+    width: 12px;
+    background-color: #F92705;
+    border-radius: 50%;
+    float: left;
+
+}
+.text{
+font-family: 'Verdana' ;
+text-align: left;
+}
+.mat-card{
+width: 15%;
+height: 60%;
+}
+
+.circle {
+    background: #456BD9;
+    clip-path: circle(5%);
+    height: 5em;
+    width: 5em;
+  }

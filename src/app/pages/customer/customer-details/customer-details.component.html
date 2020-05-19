@@ -1,0 +1,76 @@
+<!--
+<div>
+  <h2>Customer Details</h2>
+  <div
+       *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+
+
+    <table>
+  <thead>
+  <tr>
+      <th>CustomerName:  </th>
+      <th>{{ customer.FirstName }} {{ customer.LastName }}</th>
+  </tr>
+     <tr>
+      <th>Country:  </th>
+      <th>{{ customer.Country }}</th>
+  </tr>
+     <tr>
+      <th>Address:  </th>
+      <th>{{ customer.Address }}</th>
+  </tr>
+     <tr>
+      <th>Company:  </th>
+      <th>{{ customer.Company }}</th>
+  </tr>   <tr>
+      <th>Email:  </th>
+      <th>{{ customer.Email }}</th>
+  </tr>
+     <tr>
+      <th>Phone:  </th>
+      <th>{{ customer.Phone }}</th>
+  </tr>
+     <tr>
+      <th>Mobile:  </th>
+      <th>{{ customer.Mobile }}</th>
+  </tr>
+     <tr>
+      <th>Website:  </th>
+      <th>{{ customer.Website }}</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  </tbody>
+</table>
+ <button routerLink= "/pages/customer">Back</button>
+</div>
+-->
+<table mdbTable>
+  <thead >
+    <tr>
+      <th scope="col"> CustomerName</th>
+      <th scope="col"> Country</th>
+      <th scope="col"> Address</th>
+      <th scope="col"> Company</th>
+      <th scope="col"> Email</th>
+      <th scope="col"> Phone</th>
+      <th scope="col"> Mobile</th>
+      <th scope="col"> Website </th>
+    </tr>
+      <tr>
+      <th scope="row">{{customer.FirstName}} {{customer.LastName}}</th>
+       <th scope="row">{{customer.Country}}</th>
+       <th scope="row">{{customer.Address}}</th>
+       <th scope="row">{{customer.Company}}</th>
+      <th scope="row">{{customer.Email}}</th>
+      <th scope="row">{{customer.Phone}}</th>
+      <th scope="row">{{customer.Mobile}}</th>
+      <th scope="row">{{customer.Website}}</th>
+       </tr>
+  </thead>
+</table>
+
+ <button routerLink= "/pages/customer">Back</button>

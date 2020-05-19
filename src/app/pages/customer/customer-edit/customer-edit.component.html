@@ -1,0 +1,82 @@
+<mat-icon type="button" class="close" (click)="onNoClick()">clear</mat-icon>
+<h6 mat-dialog-title cdkDrag cdkDragRootElement=".cdk-overlay-pane"> Edit Customer</h6>
+<div class="container">
+  <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
+    <!--Textarea for demo purposes-->
+    <div class="form">
+      <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="FirstName" [(ngModel)]="data.FirstName" name="FirstName"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	     <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="LastName" [(ngModel)]="data.LastName" name="LastName"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+
+	 </div>
+
+   <div class="form">
+    <h6 style=" font-size: 10px" >Company Information:</h6>
+    <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <h6 style=" font-size: 10px" >Contact Information:</h6>
+    </div>
+	  <div class="form">
+	    <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Company" [(ngModel)]="data.Company" name="Company"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	     <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	  <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Email" [(ngModel)]="data.Email" #emailInput="ngModel" name="email" type="email" required email>
+         <mat-error *ngIf="emailInput.invalid">Please enter a valid email.</mat-error>
+      </mat-form-field>
+	 </div>
+	 <div class="form">
+	   <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Country" [(ngModel)]="data.Country" name="Country"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	   <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Phone" [(ngModel)]="data.Phone" name="Phone"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+   </div>
+
+	 <div class="form">
+	   <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Address" [(ngModel)]="data.Address" name="Address"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	   <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	    <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Mobile" [(ngModel)]="data.Mobile" name="Mobile"  >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	 </div>
+
+
+	  <div class="form">
+      <span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+	   <mat-form-field color="accent">
+        <input matInput #input class="form-control" placeholder="Website" [(ngModel)]="data.Website" name="Website" >
+        <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
+      </mat-form-field>
+	 </div>
+
+
+
+    <div mat-dialog-actions>
+      <button mat-raised-button color="primary" [type]="submit" [disabled]="!formControl.valid" [mat-dialog-close]="1" (click)="stopEdit()">Save</button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

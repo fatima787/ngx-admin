@@ -1,0 +1,155 @@
+<div *ngFor="let statu of statusess">
+<mat-card class="statu" *ngIf="statu.Active === undefined; else notShow"><span class="active-icon"> </span>Active <p> 0</p></mat-card>
+<ng-template #notShow ><mat-card class="statu" ><span class="active-icon"> </span>Active<p> {{statu.Active}} </p></mat-card></ng-template>
+
+<mat-card class="statu" *ngIf="statu.InProgress === undefined; else notvisi"><span class="inprog-icon"></span>In Progress<p> 0 </p></mat-card>
+<ng-template #notvisi ><mat-card class="statu" ><span class="inprog-icon"> </span>In Progress<p> {{statu.InProgress}} </p></mat-card></ng-template>
+
+<mat-card class="statu" *ngIf="statu.OnHold === undefined; else notread"> <span class="onhold-icon"> </span>On Hold<p> 0 </p></mat-card>
+<ng-template #notread ><mat-card class="statu" ><span class="onhold-icon"> </span>On Hold<p> {{statu.OnHold}} </p></mat-card></ng-template>
+
+<mat-card class="statu" *ngIf="statu.Complete === undefined; else nottell"> <span class="comp-icon"> </span>Complete<p> 0 </p></mat-card>
+<ng-template #nottell ><mat-card class="statu" ><span class="comp-icon"> </span>Complete<p> {{statu.Complete}} </p></mat-card></ng-template>
+
+<mat-card class="statu" *ngIf="statu.Expired === undefined; else nottry"> <span class="expire-icon"> </span>Expired<p> 0 </p></mat-card>
+<ng-template #nottry ><mat-card class="statu" ><span class="expire-icon"> </span>Expired<p> {{statu.Expired}} </p></mat-card></ng-template>
+</div>
+
+  <div class="mat-elevation-z8">
+  <div class="form">
+    <mat-form-field floatPlaceholder="never" color="accent">
+      <input matInput #filter placeholder="Filter products">
+    </mat-form-field>
+  </div>
+
+  <mat-table #table [dataSource]="productt" matSort class="mat-cell">
+    ng update @angular/cli @angular/core
+
+    <ng-container  matColumnDef="FirstName">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>CustomerName</mat-header-cell>
+      <mat-cell *matCellDef="let row"> {{row.FirstName}} {{row.LastName}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="procontracts.ProductName">
+        <mat-header-cell *matHeaderCellDef> ProductName </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.ProductName}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="procontracts.Price">
+        <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.Price}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="procontracts.Quantity">
+        <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.Quantity}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="procontracts.status">
+        <mat-header-cell *matHeaderCellDef> status </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.status}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="procontracts.start">
+        <mat-header-cell *matHeaderCellDef> StartDate </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.start | date:'medium'}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+      <ng-container matColumnDef="procontracts.end">
+        <mat-header-cell *matHeaderCellDef> EndDate </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+
+              <ng-container  *ngFor="let contract of row.procontracts">
+             <p>  {{contract.end | date:'medium'}}</p>
+              </ng-container>
+        </mat-cell>
+
+      </ng-container>
+
+
+    <!-- actions -->
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>
+        <button mat-raised-button color="primary" (click)="addProduct()">Add Product Contract</button>
+      </mat-header-cell>
+
+      <mat-cell *matCellDef="let row; let i=index;">
+        <button mat-icon-button *ngFor="let contract of row.procontracts" matTooltip="Edit" color="primary" (click)="editProdu(row.FirstName,contract.ProductName,contract.Price,contract.Quantity,
+        contract.status, contract.startdate, contract.enddate, contract.priceterm, contract.term, contract.totalprice,contract.start,contract.end,contract._id)">
+          <mat-icon aria-label="Edit">edit</mat-icon>
+        </button>
+
+    <button mat-icon-button color="primary" matTooltip="Details" [routerLink]="['details/', row._id]"><mat-icon>assignment</mat-icon></button>
+
+    <button *ngFor="let contract of row.procontracts" matTooltip="Delete" mat-icon-button color="accent" (click)="deleteProduct(contract._id, contract.ProductName)">
+      <mat-icon aria-label="Delete">delete</mat-icon>
+    </button>
+      </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+
+ <!--  <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
+    No results
+  </div> -->
+
+  <mat-paginator #paginator
+                 [length]="dataSource.filteredData.length"
+                 [pageIndex]="0"
+                 [pageSize]="10"
+                 [pageSizeOptions]="[5, 10, 25, 100]">
+  </mat-paginator>
+</div>
+
+
+<button type="button" mdbBtn color="primary" class="relative waves-light" (click)="basicModal.show()" mdbWavesEffect>Notification</button>
+
+<div mdbModal #basicModal="mdbModal" class="modal fade right" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-full-height modal-right" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title w-100" id="myModalLabel">Contract Expiration</h4>
+      </div>
+      <div *ngIf="!remindd || remindd.length === 0">
+        <p>No Notification</p>
+    </div>
+      <div class="modal-body" *ngFor="let remi of remindd">
+        <p> ContractName: {{remi.ProductName}} </p>
+        <p>Will expire on {{remi.enddate | date:'medium'}} </p>
+      </div>
+   <!--    <div class="modal-footer">
+        <button type="button" mdbBtn color="secondary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+        <button type="button" mdbBtn color="primary" class="relative waves-light" mdbWavesEffect>Save!</button>
+      </div> -->
+    </div>
